@@ -2,8 +2,11 @@ const { Router, json } = require('express')
 const Course = require('../models/course')
 const auth = require('../middleware/auth')
 const router = Router()
-const stripePublicKey = "pk_test_51P9x6FECVIMwlQ1bxa9Hk8fGox5VcpKINZYORTqWcbpueW0LyjoINcmOObEGGxYKBmn6mkLq8vcMwQlyAxH8QhzP00Hkyy6d37";
-const stripeSecretKey = "sk_test_51P9x6FECVIMwlQ1b7jFA48a0Rt1L1WPMUq4xWR5UMSjlCMxuscm2YcaKUxoSi5zOPA9XMoCifgOsd58HHhlURwgr00TUUcVcS1";
+require('dotenv').config();
+
+const stripePublicKey = process.env.STRIPE_PUBLIC_KEY;
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+
 const stripe = require('stripe')(stripeSecretKey)
 const Order = require('../models/order'); 
 
