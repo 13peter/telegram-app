@@ -1,0 +1,62 @@
+<footer class="site-footer">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-10 me-auto mb-4">
+                        <h4 class="text-white mb-3">Lytvyn Courses</h4>
+                        <br>
+                    </div>
+
+                    <div class="col-lg-5 col-8">
+                        <h5 class="text-white mb-3">Карта сайту</h5>
+
+                       <ul class="footer-menu d-flex flex-wrap">
+    <li class="footer-menu-item"><a href="/courses" class="footer-menu-link">Актуальні курси</a></li>
+
+
+    {{#if isAuthenticated}}
+        <li class="footer-menu-item"><a href="/card" class="footer-menu-link">Кошик</a></li>
+    {{else}}
+        <li class="footer-menu-item"><a href="#" onclick="alert('Для використання кошику вам потрібно увійти до свого облікового запису.')" class="footer-menu-link">Кошик</a></li>
+    {{/if}}
+
+    
+
+    {{#if isAuthenticated}}
+        <li class="footer-menu-item"><a href="/add" class="footer-menu-link">Додати курс</a></li>
+    {{else}}
+        <li class="footer-menu-item"><a href="#" onclick="alert('Для додавання курсу вам потрібно увійти до свого облікового запису.')" class="footer-menu-link">Додати курс</a></li>
+    {{/if}}
+
+    <li class="footer-menu-item"><a href="https://mail.google.com/" class="footer-menu-link">Підтримка за адресою: 13litvinpeter@gmail.com</a></li>
+</ul>
+
+                    </div>
+
+                    <div class="col-lg-3 col-4">
+                        <h5 class="text-white mb-3">Соціальні медіа</h5>
+
+                        <ul class="social-icon">
+
+                            <li><a href="https://www.instagram.com/">Інстаграм: 13petr23</a></li>
+
+                            <li><a href="https://api.whatsapp.com/">WhatsApp за номером      +4915566213957</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+
+<div id="loader"><span class="loader"></span></div>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+ <script src="/app.js"></script>
+
+
+   <!-- JAVASCRIPT FILES -->
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/Headroom.js"></script>
+        <script src="/js/jQuery.headroom.js"></script>
+        <script src="/js/slick.min.js"></script>
+        <script src="/js/custom.js"></script>

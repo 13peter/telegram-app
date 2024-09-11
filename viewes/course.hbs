@@ -1,0 +1,44 @@
+            <section class="product-detail section-padding">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-12">
+                            <div class="product-thumb">
+                                <img src="{{course.img}}" class="img-fluid product-image" alt="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-12">
+                            <div class="product-info d-flex">
+                                <div>
+                                    <h2 class="product-title mb-0">{{course.title}}</h2>
+
+                                    <p class="product-p"><strong>Придбай та вивчай!</strong></p>
+                                </div>
+
+                                <small class="product-price text-muted ms-auto mt-auto mb-5 price">{{course.price}}</small>
+                            </div>
+
+                            <div class="product-description">
+
+                                <h3><strong class="d-block mt-4 mb-2">Опис курса</strong></h3>
+                                <p class="lead mb-5">{{course.description}}</p>
+                            </div>
+
+                            <div class="product-cart-thumb row">
+                     
+
+                                <div class="col-lg-6 col-12 mt-4 mt-lg-0">
+                                    {{#if @root.userAuthed}}
+                                    <form class="form-add" enctype="application/x-www-form-urlencoded">
+                                    <input type="hidden" class="csrf" name="_csrf" value="{{@root.csrf}}"> 
+                                    <input type="hidden" class="cid" name="id" value="{{course.id}}">
+                                    <button type="submit" class="btn custom-btn cart-btn">Купити - <span class="price">{{course.price}}</span></button>
+                                    </form>
+                                    {{/if}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>

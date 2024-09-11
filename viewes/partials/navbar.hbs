@@ -1,0 +1,85 @@
+
+      
+        <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <a class="navbar-brand" href="/">
+                        <strong><span>Lytvyn</span> Courses</strong>
+                    </a>
+
+                    <div class="d-lg-none">
+                        <a href="/auth/login" class="bi-person custom-icon me-3"></a>
+
+                        <a href="product-detail.html" class="bi-bag custom-icon"></a>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mx-auto">
+
+                      {{#if isHome}}
+                        <li class="nav-item">
+                          <a class="nav-link active" href="/">Головна</a>
+                        </li>
+                      {{else}}
+                        <li class="nav-item">
+                          <a class="nav-link" href="/">Головна</a>
+                        </li>
+                      {{/if}} 
+                      {{#if isCourses}}
+                      <li class="nav-item"><a class="nav-link active" href="/courses">Курси</a></li>
+                      {{else}}
+                          <li class="nav-item"><a class="nav-link" href="/courses">Курси</a></li>
+                      {{/if}} 
+
+                      {{#if isAuth}}
+                        {{#if isAdd }}
+                          <li class="nav-item">
+                            <a class="nav-link active" href="/add">Додати курс</a>
+                          </li>
+                        {{else}}
+                            <li class="nav-item">
+                            <a class="nav-link" href="/add">Додати курс</a>
+                          </li>
+                        {{/if}} 
+
+                        {{#if isOrder }}
+                            <li class="nav-item">
+                            <a class="nav-link active" href="/orders">Замовлення</a>
+                          </li>
+                        {{else}}
+                            <li class="nav-item">
+                            <a class="nav-link" href="/orders">Замовлення</a>
+                          </li>
+                        {{/if}} 
+                      {{/if}} 
+                            
+                        </ul>
+
+                        <div class="d-none d-lg-block">
+                            {{#if isAuth}}
+                            
+                                <a href="/auth/logout">
+                                <img src="/images/logout.svg" width='30'>
+                                 </a> 
+                              
+ 
+                                <a href="/card">
+                                <img src="/images/cart.svg" width='30'>
+                                <span class="cardCount" id="cardCount"></span>
+                                </a>
+       
+                            {{else}}
+ 
+                                  <a href="/auth/login">
+                                    <img src="/images/user.svg" width='30'>
+                                  </a>
+   
+                            {{/if}}
+                            
+                        </div>
+                    </div>
+                </div>
+            </nav>

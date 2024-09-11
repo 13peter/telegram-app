@@ -1,0 +1,56 @@
+  <section class="contact section-padding">
+                <div class="container">
+                    <div class="row">
+                            <div class="col-lg-6 col-12 m-auto">
+                            
+                            
+                            <div class='my-5'>
+                                <h1>{{title}}</h1>
+                            </div>     
+
+  <form action="/add" method="POST" class="contact-form me-lg-5 pe-lg-3" enctype="multipart/form-data">
+        <div class="form-floating ">
+          <input id="title" name="title" type="text" class="validate form-control" required>
+          <label for="first_name">Назва курсу</label>
+          <span class="helper-text" data-error="Введіть назву курсу"></span>
+        </div>
+
+         <div class="form-floating my-4">
+          <textarea id="description" name="description" type="text" class="validate form-control" style="height: 150px;" required></textarea>
+          <label for="description">Описання курсу</label>
+          <span class="helper-text" data-error="Введіть описання курсу "></span>
+        </div>
+
+        <div class="form-floating my-4">
+          <input id="price" name="price" type="text" class="validate form-control" required min="1">
+          <label for="price">Ціна курсу   
+          </label>
+          <span class="helper-text" data-error="Введіть ціну"></span>
+        </div>  
+
+      <div class="form-floating my-4">
+          <input  id="img" name="img" type="text" class="validate form-control" required>
+          <label for="img">URL картинки</label>
+          <span class="helper-text" data-error="Введіть URL картинки"></span>
+        </div>
+
+      <div class="form-floating my-4">
+          <input  id="courseFile" name="courseFile" type="file" class="validate" required>
+          <span class="helper-text" data-error="Выберите файл з курсом"></span>
+        </div>      
+
+
+
+      <input type="hidden" name="_csrf" value="{{csrf}}"> 
+  
+    <div class="col-lg-5 col-6">
+      <button class="form-control" type="submit">Додати курс</button>
+    </div>
+  </form>
+      </div>
+
+                        
+
+         </div>
+                </div>
+            </section>

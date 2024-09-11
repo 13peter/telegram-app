@@ -1,0 +1,67 @@
+<header class="site-header section-padding d-flex justify-content-center align-items-center">
+                <div class="container">
+                    <div class="row">
+                   
+                        <div class="col-lg-10 col-12">
+                            <h1>
+                                <span class="text-primary">Оберіть свій</span>
+                                <span class="text-dark">КУРС
+                                </span>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <section class="products section-padding">
+                <div class="container">
+                    <div class="row">
+
+                  {{#if courses.length}}
+                    {{#each courses}}
+                        <div class="col-lg-4 col-12 mb-3">
+                            <div class="product-thumb">
+                                <a href="/courses/{{this.id}}">
+                                <div style='width: 100%; height: 300px; overflow: hidden'>
+                                    <img src="{{this.img}}" style='height: 100%;width: 100%; object-fit: cover;' alt="{{this.title}}">
+                                </div>
+                                </a>
+
+                                
+
+                                <div class="product-info d-flex">
+                                    <div>
+                                        <h5 class="product-title mb-0">
+                                            <a href="product-detail.html" class="product-title-link">{{this.title}}</a>
+                                            
+                                        </h5>
+                                            <form class="form-add" enctype="application/x-www-form-urlencoded">
+                                                <input type="hidden" class="csrf" name="_csrf" value="{{@root.csrf}}"> 
+                                                <input type="hidden" class="cid" name="id" value="{{id}}">
+                                                
+                                                    
+                                              {{#if @root.userAuthed}}
+                                                    <button type="submit" class="btn custom-btn cart-btn">Купити</button>
+                                                {{/if}}
+
+                                            </form>     
+                                                        
+                                        <p>
+                                        {{#ifeq this.userId._id @root.userAuthed}}
+                                            <a href="/courses/{{this.id}}/edit?allow=true">Редагувати курс</a>
+                                        {{/ifeq}}
+                                        </p>
+                                    </div>
+
+                                    <small class="product-price text-muted ms-auto price">{{this.price}}</small>
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+                    {{else}}
+                      <p>Курсів ще немає</p>
+                      <a href='/add' class='btn custom-btn' style='max-width: 200px;'>Додати</a>
+                    {{/if}}
+                    </div>
+                </div>
+            </section>

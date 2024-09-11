@@ -1,0 +1,144 @@
+<header class="site-header section-padding d-flex justify-content-center align-items-center">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-10 col-12">
+                            <h1>
+                                <span class="text-primary">Кошик</span>
+                               
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+</header>
+
+              <section class="section-padding">
+                <div class="container">
+                    <div class="row">
+<div id="card">
+{{#if courses.length}}
+
+<section class="h-100 gradient-custom">
+  <div class="container py-5">
+    <div class="row d-flex justify-content-center my-4">
+      <div class="col-md-8">
+        <div class="card mb-4">
+          <div class="card-header py-3 d-flex flex-row justify-content-between">
+              <h5 class="mb-0">
+                  <span class='cardCount'></span> курса у кошику
+              </h5>
+              <button
+                type="button" 
+                class="js-remove-all btn"
+                data-id="{{id}}"
+                data-csrf="{{@root.csrf}}"
+                >Видалити кошик <img class="pe-none" src="/images/delete.svg" width='30'>
+              </button>
+          </div>
+          <div class="card-body">
+
+{{#if courses.length}}
+{{#each courses}}
+            <!-- Single item -->
+            <div class="row">
+              <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                <!-- Image -->
+                <div class="bg-image hover-overlay hover-zoom ripple rounded " data-mdb-ripple-color="light">
+                  <img src="{{this.img}}"
+                    class="w-100 object-fit-cover h-100" style='max-width: 150px; max-height: 150px'/>
+                  <a href="#!">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+                  </a>
+                </div>
+                <!-- Image -->
+              </div>
+
+              <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+                <!-- Data -->
+                <p><strong>{{title}}</strong></p>
+                <p>
+                  Кількість: {{count}}
+                </p>
+                <p>
+                  Ціна: <strong class='price'>{{price}}</strong>
+                </p>
+              </div>
+
+              <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+               
+                <p class="text-start text-md-center d-flex justify-content-end">
+                  <button 
+                  class="btn btm-small js-remove" 
+                  data-id="{{id}}"
+                  data-csrf="{{@root.csrf}}"
+                  >
+                  <img src="/images/delete.svg" width='30' class="pe-none">
+                  </button>
+                </p>
+         
+              </div>
+            </div>
+            <!-- Single item -->
+                        <hr class="my-4" />
+  {{/each}}
+  {{/if}}
+          </div>
+        </div>
+ 
+        <div class="card mb-4 mb-lg-0">
+          <div class="card-body">
+            <p><strong>Ми приймаємо</strong></p>
+            <img class="me-2" width="45px"
+              src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
+              alt="Visa" />
+            <img class="me-2" width="45px"
+              src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
+              alt="American Express" />
+            <img class="me-2" width="45px"
+              src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
+              alt="Mastercard" />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-header py-3">
+            <h5 class="mb-0">Загальна сумма</h5>
+          </div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li
+                class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                <div>
+                  <strong>До сплати</strong>
+                </div>
+                <span><strong class='price price-total'>{{price}}</strong></span>
+              </li>
+            </ul>
+
+             {{!-- <form action="/orders" method="POST">
+              <input type="hidden" name="_csrf" value="{{csrf}}">   
+              <button type="submit" class="btn btn-primary btn-lg btn-block">Зробити замовлення</button>
+              </form> --}}
+              
+             
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="stripeClick()">Зробити замовлення</button>
+
+              
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{else}}
+  <h2><center>У кошику пусто</center></h2>
+{{/if}}
+ 
+
+</div>
+                    </div>
+                </div>
+                </section>

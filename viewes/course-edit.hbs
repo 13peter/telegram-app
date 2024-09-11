@@ -1,0 +1,75 @@
+
+<section class="product-detail section-padding">
+                <div class="container">
+
+  <h1>Редагувати {{course.title}}</h1>
+
+<form action="/courses/edit" method="POST" class="course-form">
+    <div class="form-floating my-4">
+
+          <input id="title" name="title" type="text" class="validate form-control" required value="{{course.title}}">
+                <label for="first_name">Назва курсу</label>
+          <span class="helper-text" data-error="Введіть назву курса"></span>
+        </div>
+
+        <div class="form-floating my-4">
+          <textarea id="description" name="description" type="description" class="validate form-control" style="height: 150px;" required>{{course.description}}</textarea>
+          <label for="description">Введіть опис курсу</label>
+          <span class="helper-text" data-error="Введіть опис курсу"></span>
+        </div>
+
+      <div class="form-floating my-4">
+        
+          <input id="price" name="price" type="text" class="validate form-control" required min="1" value="{{course.price}}">
+          <label for="price">Ціна курсу   
+          </label>
+          <span class="helper-text" data-error="Введіть ціну"></span>
+        </div>  
+
+      <div class="form-floating my-4">
+          <input  id="img" name="img" type="text" class="validate form-control" required value="{{course.img}}">
+                <label for="img">URL картинки</label>
+          <span class="helper-text" data-error="Введіть URL картинки"></span>
+        </div>
+
+          <div class="form-floating my-4">
+              <input id="courseFile" name="courseFile" type="file" class="validate" required>
+              <span class="helper-text" data-error="Выберите файл з курсом"></span>
+          </div>
+          
+        <input type="hidden" name="id" value="{{course.id}}">
+        <input type="hidden" name="_csrf" value="{{csrf}}"> 
+
+      <button class="btn custom-btn cart-btn mb-3" type="submit" style='max-width: 250px;'>Редагувати курс</button>
+  </form>
+  <form action="/courses/remove" method="POST">
+    <input type="hidden" name="id" value="{{ course.id }}">
+    <input type="hidden" name="_csrf" value="{{csrf}}"> 
+    <button class="btn custom-btn cart-btn mb-3" style='max-width: 250px;'>Видалити курс</button>
+  </form>
+
+         </div>
+            </section>
+
+
+<script>
+  function uploadFileFromLink(fileUrl) {
+    fetch(fileUrl)
+        .then(response => response.blob())
+        .then(blob => {
+            const file = new File([blob], '{{ course.courseFile }}');
+            const fileInput = document.getElementById('courseFile');
+            const fileList = new DataTransfer();
+            fileList.items.add(file);
+            fileInput.files = fileList.files;
+        })
+        .catch(error => {
+            console.error('Error fetching file:', error);
+        });
+}
+
+window.onload = function() {
+uploadFileFromLink('/files/{{ course.courseFile }}')
+};
+
+</script>

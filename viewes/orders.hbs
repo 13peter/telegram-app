@@ -1,0 +1,46 @@
+<header class="site-header section-padding d-flex justify-content-center align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-12">
+                <h1><span class="d-block text-primary">Історія Замовлень</span></h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="contact section-padding">
+    <div class="container">
+        <div class="accordion" id="accordionProduct">
+            {{#if orders.length}}
+                {{#each orders}}
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading{{_id}}">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{_id}}" aria-expanded="true" aria-controls="collapse{{_id}}">
+                                # <small>{{_id}}</small> | <span class="date">{{date}}</span>
+                            </button>
+                        </h2>
+                        <div id="collapse{{_id}}" class="accordion-collapse collapse" aria-labelledby="heading{{_id}}" data-bs-parent="#accordionProduct">
+                            <div class="accordion-body">
+                                <p class="large-paragraph">Замовник: <em>{{user.userId.name}}</em> - {{user.userId.email}}</p>
+                                <p>Ціна: <span class="price">{{price}}</span></p>
+    
+                                
+                                <hr>
+                                <ol>
+                                    {{#each courses}}
+                                        <li>
+                                            {{course.title}} (<strong>{{count}}</strong>) 
+                                            <a href="/files/{{ course.courseFile }}" download>Завантажити курс </a>
+                                        </li>
+                                    {{/each}}
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            {{else}}
+                <p>Замовлень ще немає</p>
+            {{/if}}
+        </div>
+    </div>
+</section>
